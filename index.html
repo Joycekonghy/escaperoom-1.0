@@ -118,5 +118,33 @@
       document.body.appendChild(script);
 
     </script>
+        <!-- Hidden Mobile Keyboard Input -->
+<input id="mobileInput"
+style="position:absolute; top:-100px; left:-100px; opacity:0; z-index:1000;"
+oninput="sendToUnity(this.value)" />
+
+<script>
+function showMobileInput(position, value) {
+const input = document.getElementById("mobileInput");
+input.style.top = position.y + "px";
+input.style.left = position.x + "px";
+input.style.opacity = 1;
+input.value = value || "";
+input.focus();
+}
+
+function hideMobileInput() {
+const input = document.getElementById("mobileInput");
+input.style.opacity = 0;
+input.blur();
+}
+
+function sendToUnity(text) {
+if (typeof unityInstance !== 'undefined') {
+unityInstance.SendMessage("GameManager", "OnMobileInputChanged", text);
+}
+}
+</script>
+
   </body>
 </html>
