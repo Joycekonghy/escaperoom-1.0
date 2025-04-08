@@ -141,7 +141,7 @@ input.blur();
 
 function sendToUnity(text) {
 if (typeof unityInstance !== 'undefined') {
-unityInstance.SendMessage("GameManager", "OnMobileInputChanged", text);
+unityInstance.SendMessage("WebGLMobileInput", "OnMobileInputChanged", text);
 }
 }
 </script>
